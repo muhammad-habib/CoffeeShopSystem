@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    @categories=Category.all
     @product = Product.new
   end
 
@@ -49,6 +50,18 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PATCH/PUT /products/1
+  # PATCH/PUT /products/1.json
+  def is_available
+    @product = Product.find(params[:id])
+    if @product.is_available==true
+      @product.update_attributes(is_available: false)
+    else
+      @product.update_attributes(is_available: true)
+    end
+    redirect_to products_path
   end
 
   # DELETE /products/1
