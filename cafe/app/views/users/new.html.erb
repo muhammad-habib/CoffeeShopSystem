@@ -1,0 +1,33 @@
+<div class="ui container">
+  <h1>Adding User
+    <i class="add user icon"></i>
+  </h1>
+
+<%= form_for :user, url: users_path do |f| %>
+
+    <p>
+      <%= f.label :UserName, class: "ui label" %><br>
+      <%= f.text_field :username %>
+    </p>
+
+    <p>
+      <%= f.label :Email, class: "ui label" %><br>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :password, class: "ui label" %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :Admin, class: "ui label" %><br>
+      <%= f.check_box :admin %>
+    </p>
+
+    <p>
+      <%= f.submit "Save", :class => 'ui green button' %>
+      <%= link_to 'Back', users_path , class: 'ui black button' %>
+    </p>
+<% end %>
+</div>
