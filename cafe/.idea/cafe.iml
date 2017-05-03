@@ -124,6 +124,7 @@
     </content>
     <orderEntry type="jdk" jdkName="RVM: ruby-2.4.0" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v5.0.2, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v5.0.2, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v5.0.2, RVM: ruby-2.4.0) [gem]" level="application" />
@@ -191,6 +192,7 @@
     <orderEntry type="library" scope="PROVIDED" name="web-console (v3.5.0, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.6.5, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.2, RVM: ruby-2.4.0) [gem]" level="application" />
+
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

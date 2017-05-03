@@ -35,6 +35,10 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+    ActionCable.server.broadcast 'messages',
+                                 message: 'asd',
+                                 user: 'lion'
+    head :ok
   end
 
   # PATCH/PUT /orders/1
