@@ -1,0 +1,30 @@
+<h1>Editing User</h1>
+  <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+    <p>
+      <%= f.label :UserName %><br>
+      <%= f.text_field :username %>
+    </p>
+
+    <p>
+      <%= f.label :Email %><br>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :Admin %><br>
+      <%= f.check_box :admin %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+
+  <%= link_to 'Back', users_path %>
+</div>

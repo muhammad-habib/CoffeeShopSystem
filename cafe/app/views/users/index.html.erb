@@ -1,12 +1,14 @@
-<% if user_signed_in? %>
+<h1>Users</h1>
 
-    <h3>You have succesfully signed in</h3>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+  <%= link_to 'Add New User', new_user_path %>
+  <% @users.each do |user| %>
 
-<% else %>
+      <h3>  <%= user.username %></h3>
+      <p> <%= user.email %></p>
+      <p>Admin : <%= user.admin %></p>
+      <p> <%= link_to 'Edit', edit_user_path(user) %>
+            || <%= link_to 'Delete', user_path(user), method: :delete, data: {confirm:'Are you sure?'} %> </p>
+      <br>
+      <hr>
+  <% end %>
 
-    <h1> Welcome To The Cafe</h1>
-    <%= link_to "Sign In", new_user_session_path, :method => :get %>
-
-
-<% end %>
