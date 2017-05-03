@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :orders
-  resources :products
+  resources :products do
+    member do
+      get 'is_available'
+    end
+  end
   resources :categories
   devise_for :users
   root to: 'products#index'
