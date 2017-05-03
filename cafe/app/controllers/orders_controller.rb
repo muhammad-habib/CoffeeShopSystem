@@ -15,6 +15,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @products=Product.where(:is_available => true)
+
   end
 
   # GET /orders/1/edit
@@ -26,9 +28,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
+
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -38,7 +41,7 @@ class OrdersController < ApplicationController
     ActionCable.server.broadcast 'messages',
                                  message: 'asd',
                                  user: 'lion'
-    head :ok
+    # head :ok
   end
 
   # PATCH/PUT /orders/1
@@ -73,6 +76,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:room, :user_id)
+      params.require(:order).permit(:room, :user_id, :info)
     end
 end
