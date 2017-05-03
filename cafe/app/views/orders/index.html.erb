@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
+<% if current_user.admin? %>
+    <%= link_to 'Show Users', users_path %> ||
+    <%= link_to 'Add New User', new_user_path %>
 
+    <% end %>
 <h1>Orders</h1>
 
 <table>
