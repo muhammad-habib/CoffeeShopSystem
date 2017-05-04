@@ -4,10 +4,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    puts "fdsfsdf"
-    puts user_session.inspect
     @orders = Order.all
   end
+
+  def myorders
+    @orders = Order.where(:user_id => current_user.id)
+  end
+
 
   # GET /orders/1
   # GET /orders/1.json
