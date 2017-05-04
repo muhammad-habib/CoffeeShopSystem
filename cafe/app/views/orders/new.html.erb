@@ -1,5 +1,99 @@
 <h1>New Order</h1>
 
-<%= render 'form', order: @order %>
+
+<div class="ui internally celled grid">
+  <div class="row">
+    <div class="six wide column">
+      <%= render 'form', order: @order %>
+    </div>
+    <div class="ten wide column">
+      <div class="ui internally celled grid">
+        <div class="row">
+
+
+            <h1>seif</h1>
+
+
+        </div>
+        <div class="row ">
+
+          <div class="ui grid">
+            <% @products.each do |i| %>
+                <div class="four wide column">
+
+                    <button id="<%= i.id %>" class="items" class="ui button" >
+                      <label for="name"><%= i.name %></label>
+                      <span><%= i.price %></span>
+                    </button>
+
+
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
 
 <%= link_to 'Back', orders_path %>
+<div class="ui grid">
+  <div class="eight wide column">
+    <div class="row">
+      <div class="ui grid">
+        <div class="eight wide column">
+
+        </div>
+        <div class="eight wide column">
+          <h1>seif</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="eight wide column">
+    <ul>
+
+      <% @products.each do |i| %>
+          <!--<li>-->
+            <!--<button id="<%= i.id %>" class="items" class="ui button" >-->
+              <!--<label for="name"><%= i.name %></label>-->
+              <!--<span><%= i.price %></span>-->
+            <!--</button>-->
+          <!--</li>-->
+      <% end %>
+    </ul>
+  </div>
+  <button id="test">add</button>
+</div>
+
+<script type="text/javascript">
+  var list=''
+  var create = function(id,name){
+      item="<tr class='product' id=",id,">"
+      item+="<td><label>",name,"</label></td>"
+      item+="<td><input type=text value=1></td>"
+      item+="<td><input type=text ></td>"
+      item+="<td>remove</td></tr>"
+      return item
+  }
+  $(".items").click(function () {
+      console.log("clicked")
+      id=$("label").attr('id')
+      name=$("label",this).text()
+      price=$("span",this).text()
+      item=create(id,name)
+      console.log($("label",this).text())
+
+      //list[id]={'id':id,'notes':notes, 'amount':amount}
+      $('#holder').append(item)
+
+  });
+
+</script>

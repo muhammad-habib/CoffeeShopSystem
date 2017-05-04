@@ -19,3 +19,4 @@
 /.idea/*
 /db/schema.rb
 public/uploads/tmp/
+.idea/

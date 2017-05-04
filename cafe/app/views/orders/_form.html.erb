@@ -1,27 +1,45 @@
-<%= form_for(order) do |f| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<table  class="ui single line table">
 
-      <ul>
-      <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <tbody id="holder">
+  <tr>
+    <td>Jill Lewis</td>
+    <td>May 11, 2014</td>
+    <td>jilsewris22@yahoo.com</td>
+    <td>Yes</td>
+  </tr>
+  </tbody>
+</table>
+
+<%= form_for(order, :html => {:id => 'form'}) do |f| %>
+    <% if order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+          <ul>
+            <% order.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :room %>
+      <%= f.number_field :room %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :room %>
-    <%= f.number_field :room %>
-  </div>
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.text_field :user_id %>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div id="submit" class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
+
+
+<script type="text/javascript">
+
+
+</script>
