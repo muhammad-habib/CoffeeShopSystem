@@ -1,14 +1,12 @@
-<table  class="ui single line table">
+<row>
+  <table  class="ui single line table">
 
-  <tbody id="holder">
-  <tr>
-    <td>name</td>
-    <td>amount</td>
-    <td>notes</td>
-    <td>action</td>
-  </tr>
-  </tbody>
-</table>
+    <tbody id="holder">
+
+    </tbody>
+  </table>
+</row>
+
 
 <%= form_for(order, :html => {:id => 'form'}) do |f| %>
     <% if order.errors.any? %>
@@ -41,5 +39,11 @@
 
 <script type="text/javascript">
 
+    $(document).on("click",".remove",function () {
+        console.log("remove",$(this).attr('data-id'))
+      delete list[$(this).data('id')]
+        console.log("after remove",list)
+      render(list)
+    });
 
 </script>
