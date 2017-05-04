@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @products=Product.where(:is_available => true)
   end
 
   # GET /orders/1/edit
