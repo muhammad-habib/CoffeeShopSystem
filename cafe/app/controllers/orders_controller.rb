@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    puts order_params
     params=order_params
     params[user_id]=current_user.id
     @order = Order.new(order_params)
