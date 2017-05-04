@@ -6,15 +6,15 @@
     <div class="ten wide column">
       <%= render 'form', order: @order %>
     </div>
-    <div class="two wide column">
-      <h1>----------------</h1>
-    </div>
-    <div class="four wide column">
+
+    <div class="six wide column">
       <div class="ui internally celled grid">
         <div class="row">
 
+          <% @rooms.each do |i| %>
+          <p><%=i%></p>
+          <%end%>
 
-            <h1>seif</h1>
 
 
         </div>
@@ -22,7 +22,7 @@
 
           <div class="ui grid">
             <% @products.each do |i| %>
-                <div class="four wide column">
+                <div data-id="<%= i.id %>" class="four wide column">
 
                     <button id="<%= i.id %>" class="items" class="ui button" >
                       <label for="name"><%= i.name %></label>

@@ -18,6 +18,9 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @products=Product.where(:is_available => true)
+    @rooms=User.all.collect(&:room)
+
+    puts @rooms
   end
 
   # GET /orders/1/edit
@@ -27,6 +30,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    params=order_params
+    params[user_id]=current_user.id
     @order = Order.new(order_params)
 
     respond_to do |format|
@@ -76,6 +81,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:room, :user_id)
+      params.require(:order).permit(:room)
     end
 end

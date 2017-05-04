@@ -23,13 +23,10 @@
 
     <div class="field">
       <%= f.label :room %>
-      <%= f.number_field :room %>
+      <%=select_tag "name", options_for_select(@rooms,current_user.room)%>
     </div>
 
-    <div class="field">
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
-    </div>
+
 <h1>total :<span id="total"></span></h1>
     <div id="submit" class="actions">
       <%= f.submit %>
