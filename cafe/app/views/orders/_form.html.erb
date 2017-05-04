@@ -21,9 +21,14 @@
         </div>
     <% end %>
 
+    <!--<div class="field">-->
+      <!--<%= f.label :room %>-->
+      <!--<%= f.number_field :room %>-->
+    <!--</div>-->
+
     <div class="field">
       <%= f.label :room %>
-      <%=select_tag "name", options_for_select(@rooms,current_user.room)%>
+      <%=select_tag "order[room]", options_for_select(@rooms,current_user.room)%>
     </div>
 
 
