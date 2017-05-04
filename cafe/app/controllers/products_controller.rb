@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -50,6 +51,9 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+    ActionCable.server.broadcast 'products',
+                                 product: @product.to_json
+    head :ok
   end
 
   # PATCH/PUT /products/1
