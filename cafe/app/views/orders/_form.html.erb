@@ -1,14 +1,12 @@
-<table  class="ui single line table">
+<row>
+  <table  class="ui single line table">
 
-  <tbody id="holder">
-  <tr>
-    <td>Jill Lewis</td>
-    <td>May 11, 2014</td>
-    <td>jilsewris22@yahoo.com</td>
-    <td>Yes</td>
-  </tr>
-  </tbody>
-</table>
+    <tbody id="holder">
+
+    </tbody>
+  </table>
+</row>
+
 
 <%= form_for(order, :html => {:id => 'form'}) do |f| %>
     <% if order.errors.any? %>
@@ -25,14 +23,11 @@
 
     <div class="field">
       <%= f.label :room %>
-      <%= f.number_field :room %>
+      <%=select_tag "name", options_for_select(@rooms,current_user.room)%>
     </div>
 
-    <div class="field">
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
-    </div>
 
+<h1>total :<span id="total"></span></h1>
     <div id="submit" class="actions">
       <%= f.submit %>
     </div>
@@ -41,5 +36,11 @@
 
 <script type="text/javascript">
 
+    $(document).on("click",".remove",function () {
+        console.log("remove",$(this).attr('data-id'))
+      delete list[$(this).data('id')]
+        console.log("after remove",list)
+      render(list)
+    });
 
 </script>
