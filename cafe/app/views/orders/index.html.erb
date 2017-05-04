@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-<% if current_user.admin? %>
-    <%= link_to 'Show Users', users_path %> ||
-    <%= link_to 'Add New User', new_user_path %>
 
-    <% end %>
 <h1>Orders</h1>
 
 <table>
@@ -19,7 +14,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.room %></td>
-        <td><%= order.user.username %></td>
+        <td><%= order.user %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

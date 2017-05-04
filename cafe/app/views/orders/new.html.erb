@@ -1,52 +1,5 @@
 <h1>New Order</h1>
 
-
+<%= render 'form', order: @order %>
 
 <%= link_to 'Back', orders_path %>
-<div class="ui grid">
-  <div class="eight wide column">
-    <div class="row">
-      <div class="ui grid">
-        <div class="eight wide column">
-          <%= render 'form', order: @order %>
-        </div>
-        <div class="eight wide column">
-          <h1>seif</h1>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="eight wide column">
-    <ul>
-
-      <% @products.each do |i| %>
-          <li>
-            <button class="items" class="ui button" >
-              <label for="name"><%= i.name %></label>
-              <span><%= i.price %></span>
-            </button>
-          </li>
-      <% end %>
-    </ul>
-  </div>
-<button id="test">add</button>
-</div>
-
-<script type="text/javascript">
-  var items=''
-  var info=''
-  var order="<input id='info' type='text' name='info'>"
-    $(".items").click(function () {
-      console.log("clicked")
-       console.log($("label",this).text())
-        $("#holder").append("<div class='field'>",$("label",this).text(),"<input class='order' type=text></div>");
-        items+=$("label",this).text()+";"
-
-    });
-  $("#submit").click(function(){$(".input").each(function(i){info+=$(this).value+";"});
-      $("#form").append(order);$("#info").val(info);
-      console.log($("#info").val())
-    })
-
-</script>

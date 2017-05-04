@@ -1,15 +1,8 @@
 class UsersController < ApplicationController
+  before_action :isAdmin
 
   def index
     @users = User.all
-  end
-
-  def signin
-    redirect_to new_user_session_path
-  end
-
-  def new
-
   end
 
   def create
@@ -44,7 +37,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password,:admin)
+    params.require(:user).permit(:username,:image, :email, :password,:admin)
   end
 
 end

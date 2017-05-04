@@ -16,6 +16,4 @@
 # Ignore Byebug command history file.
 .byebug_history
 /config/database.yml
-.idea/
-Contact GitHub API Training Shop Blog About
-
+/.idea/*

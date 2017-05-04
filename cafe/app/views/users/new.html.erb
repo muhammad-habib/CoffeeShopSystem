@@ -3,7 +3,7 @@
     <i class="add user icon"></i>
   </h1>
 
-<%= form_for :user, url: users_path, html: { multipart: true } do |f| %>
+<%= form_for :user,html: { multipart: true } , url: users_path do |f| %>
 
     <p>
       <%= f.label :UserName, class: "ui label" %><br>
@@ -14,15 +14,16 @@
       <%= f.label :Email, class: "ui label" %><br>
       <%= f.email_field :email %>
     </p>
-    <p>
-      <%= f.label :image, class: "ui label" %><br>
-      <%= f.file_field :image %>
-    </p>
 
     <p>
       <%= f.label :password, class: "ui label" %><br>
       <%= f.password_field :password %>
     </p>
+
+      <p>
+      <%= f.label :image, class: "ui label" %><br>
+      <%= f.file_field :image %>
+      </p>
 
     <p>
       <%= f.label :Admin, class: "ui label" %><br>

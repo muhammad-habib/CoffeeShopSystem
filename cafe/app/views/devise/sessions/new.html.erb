@@ -1,8 +1,6 @@
-
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui teal image header">
-
       <div class="content">
         Log-in to your account
       </div>
@@ -12,19 +10,15 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-
             <%= f.email_field :email, autofocus: true %>
           </div>
           </div>
-
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
           </div>
-
           <% if devise_mapping.rememberable? -%>
               <div class="ui checkbox field">
                 <%= f.check_box :remember_me %>
@@ -36,7 +30,6 @@
             <%= f.submit "Log in" , :class => 'ui fluid large teal  button actions' %>
           <!--</div>-->
     <% end %>
-
     <%= render "devise/shared/links" %>
     </div>
   </div>
