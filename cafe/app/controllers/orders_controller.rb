@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-    ActionCable.server.broadcast 'messages',
+    ActionCable.server.broadcast 'products',
                                  message: 'asd',
                                  user: 'lion'
     head :ok
