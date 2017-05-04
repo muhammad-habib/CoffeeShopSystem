@@ -19,7 +19,7 @@
 
           <div class="ui grid">
             <% @products.each do |i| %>
-                <div class="four wide column">
+                <div data-id="<%= i.id %>" class="four wide column">
 
                     <button id="<%= i.id %>" class="items" class="ui button" >
                       <label for="name"><%= i.name %></label>
