@@ -33,9 +33,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    puts "====>"
+    puts params
     params=order_params
-    params[user_id]=current_user.id
-    @order = Order.new(order_params)
+    params[:user_id]=current_user.id
+    @order = Order.new(params)
 
     respond_to do |format|
       if @order.save
