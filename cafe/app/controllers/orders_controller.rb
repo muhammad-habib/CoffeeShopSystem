@@ -30,14 +30,19 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    puts "====>"
-    puts params
+    productsAmount= params[:product]
     params=order_params
     params[:user_id]=current_user.id
     @order = Order.new(params)
-
     respond_to do |format|
       if @order.save
+        productsAmount.each do |key, value|
+          orderProducts = OrdersProduct.new()
+          orderProducts.product_id = key
+          orderProducts.order_id = @order.id
+          orderProducts.amount = value
+          orderProducts.save
+        end
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -45,10 +50,6 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-    ActionCable.server.broadcast 'products',
-                                 message: 'asd',
-                                 user: 'lion'
-    head :ok
   end
 
   # PATCH/PUT /orders/1

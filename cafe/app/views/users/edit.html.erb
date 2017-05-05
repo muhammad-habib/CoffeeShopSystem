@@ -29,6 +29,11 @@
     </p>
 
     <p>
+      <%= f.label :room, class: "ui label" %><br>
+      <%= f.number_field :room %>
+    </p>
+
+    <p>
       <%= f.submit "Save", :class => 'ui green button' %>
       <%= link_to 'Back', users_path , class: 'ui black button' %>
     </p>
