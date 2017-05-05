@@ -23,7 +23,8 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
             var productsItems = '';
             for(var i=0;i<products.length;i++)
             {
-                productsItems += '<span>' +
+                productsItems +='<div  style="text-align: center;">'+
+                    '<span>' +
                     '<h4 class="ui image header">' +
                     '<img src="' + products[i].image.url+'"' +
                     'class="ui mini rounded image">' +
@@ -32,7 +33,8 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                     '</div> ' +
                     '</div> ' +
                     '</h4> ' +
-                    '</span>';
+                    '</span>'+
+                    '</div>';
             }
 
             item = '<table class="ui red table">' +
