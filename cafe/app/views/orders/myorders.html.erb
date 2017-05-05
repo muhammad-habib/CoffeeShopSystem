@@ -1,23 +1,38 @@
 <h1>My Orders</h1>
+<p>
+  <%= link_to 'New Order', new_order_path, class: 'ui green button' %>
+</p>
+<div class="ui container">
+  <p>
+    <%= form_for :search, method: :get do |f| -%>
 
-<table>
-  <thead>
-  <tr>
-    <th>Room</th>
-    <th>User</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+        <%= f.label :Start_Date, class: "ui label" %>
+        <%= f.date_field :start_date, value: @start -%>
+        <%= f.label :End_Date, class: "ui label" %>
+        <%= f.date_field :end_date, value: @end -%>
+        <%= f.submit 'Search', class: 'ui blue button' -%>
 
-  <tbody>
-  <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.room %></td>
-        <td><%= order.user.username %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+    <% end -%>
+  </p>
+  <table  class="ui single line table">
+    <thead>
+    <tr>
+      <th>Order Date</th>
+      <th>Status</th>
+      <th>Amount</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at %></td>
+          <td><%= order.status %></td>
+          <td><%= order.room %></td>
+          <td><%= link_to 'Cancel', order, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
