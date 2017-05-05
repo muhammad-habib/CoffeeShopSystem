@@ -91,7 +91,7 @@ class OrdersController < ApplicationController
     end
     ActionCable.server.broadcast 'orders',
                                  order: @order.to_json
-    head :ok
+
   end
 
   private
