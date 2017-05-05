@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
-
+<div class="ui container">
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
+  <label class="ui label"><strong>Name:</strong></label>
+  <strong> <%= @product.name %></strong>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <label class="ui label"><strong>Price:</strong></label>
+  <strong><%= @product.price %></strong>
 </p>
 
 <p>
-  <strong>Is available:</strong>
-  <%= @product.is_available %>
+  <label class="ui label"> <strong>Is available:</strong></label>
+  <strong>  <%= @product.is_available %></strong>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @product.category %>
+  <label class="ui label"><strong>Category:</strong></label>
+  <strong><%= @product.category.name %></strong>
 </p>
+<br>
+<br>
+<%= link_to 'Back', products_path, class: 'ui black button' %>
+<%= link_to 'Edit', edit_product_path(@product) , class: 'ui green button'%>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+</div>

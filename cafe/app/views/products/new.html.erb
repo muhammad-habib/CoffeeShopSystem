@@ -1,5 +1,9 @@
-<h1>New Product</h1>
+<div class="ui container">
+<h1>Adding New Product
+  <i class="add square icon"></i>
+</h1>
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path, class: 'ui blue button' %>
+</div>

@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<div class="ui container">
+  <br>
 <p>
-  <strong>Name:</strong>
-  <%= @category.name %>
+  <label class= "ui label">Name: </label><br>
+  <strong><%= @category.name %></strong>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Edit', edit_category_path(@category) , class: 'ui green button'%>
+<%= link_to 'Back', categories_path, class: 'ui black button' %>
+</div>

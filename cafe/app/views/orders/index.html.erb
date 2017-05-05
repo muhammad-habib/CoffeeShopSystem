@@ -1,6 +1,6 @@
   <% @orders.each do |order| %>
       <table class="ui red table">
-        <thead>
+        <thead class="<%= order.id %>">
         <tr>
           <th>Order Date</th>
           <th>Name</th>
@@ -9,7 +9,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr class="<%= order.id %>">
           <td><%= order.created_at %></td>
           <td><%= order.user.username %></td>
           <td><%= order.user.room %></td>
@@ -17,10 +17,11 @@
         </tr>
         </tbody>
       </table>
-      <% order.orders_products.each  do |product| %>
+      <div class="<%= order.id %>" style="text-align: center;">
+        <% order.orders_products.each do |product| %>
           <span>
         <h4 class="ui image header">
-          <img src="<%= product.product.image  %>" class="ui mini rounded image">
+          <img src="<%= product.product.image %>" class="ui mini rounded image">
           <div class="content">
             <%= product.product.name %>
             <div class="sub header"><%= product.amount %>
@@ -28,5 +29,9 @@
           </div>
         </h4>
           </span>
-      <% end %>
+
+        <% end %>
+      </div>
   <% end %>
+</div>
+
