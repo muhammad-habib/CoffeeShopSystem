@@ -5,32 +5,39 @@ function getChecks(){
 	var user_orders=document.getElementById('user_orders');	
 	if(check_start_date ==null || check_end_date==null || _id==null)
 		return {"error":"please choose start date , end date and then the user"}
-	console.log('khaledgaam')
-	console.log(check_start_date)
-	console.log(check_end_date)
-	console.log(_id)
-	var location='http://localhost:3000/checks/check'
+	var location='http://localhost:3000/'
 	$.ajax({
-		url: location,
+		url: location+'checks/check',
 		type: 'POST',
 		beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 		dataType: 'json',
 		data: {check:{start_date: check_start_date , end_date:check_end_date, user_id:_id}},
 	})
 	.done(function(response) {
-		result='';
+		// result='';
+		result='<table  class="ui single line table"><thead><tr><th>Order ID</th><th>Order Date</th><th>Product Name</th><th>Product Cost</th><th>Product Amount</th></tr> </thead><tbody>';
 		response.forEach(function (product_order) {
 			product_order.forEach( function(element,index) {
 				console.log('order#'+index)
-				result+='<div> Order# '+index+'<br /> ';
+				// result+='<div> Order# '+index+'<br /> ';
 				element.forEach( function(product) {
-					result+="Product Name: "+product.name+'<br /> '+"Product Price: "+product.price+'<br /> ';
-					result+="Product Amount: "+product.amount+'<br /> '
+					result+='<tr>';
+					link=location+'orders/'+product.order_id
+					result+='<td>'+'<a href="'+link+'">'+product.order_id+'</a></td>'
+					result+='<td>'+product.created_at+'</td>'
+					result+='<td>'+product.name+'</td>'
+					result+='<td>'+product.price+' LE '+'</td>'
+					result+='<td>'+product.amount+'</td>'
+				result+='</tr>';
+					// result+="Product Name: "+product.name+'<br /> '+"Product Price: "+product.price+'<br /> ';
+					// result+="Product Amount: "+product.amount+'<br /> '
 				});
-				result+='</div><hr />';
+				// result+='</div><hr />';
 			});
 			
 		})
+		result+="</tbody></table>"
+		console.log(result)
 		user_orders.innerHTML=result
 	})
 	.fail(function(response) {
