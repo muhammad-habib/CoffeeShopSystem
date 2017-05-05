@@ -12,13 +12,10 @@ class OrdersController < ApplicationController
   end
 
   def myorders
-
     @start = selected_date(:start_date)
     @end = selected_date(:end_date)
-
     @orders = params[:search].present? ? Order.where(:created_at => @start..@end).where(:user_id => current_user.id) : Order.where(:user_id => current_user.id)
   end
-
 
   # GET /orders/1
   # GET /orders/1.json
@@ -28,7 +25,9 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @latest=Order.last.products.all
+    unless Order.all.empty?
+      @latest=Order.last.products.all
+    end
     @products=Product.where(:is_available => true)
     @rooms=User.all.collect(&:room)
 
