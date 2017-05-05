@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f63fd4a6-ed95-4ba8-bcbe-26798604e440" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cafe/public/uploads/product/image/1.jpg" afterPath="$PROJECT_DIR$/cafe/public/uploads/product/image/1.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js" afterPath="$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cafe/app/views/orders/index.html.erb" afterPath="$PROJECT_DIR$/cafe/app/views/orders/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cafe/app/views/orders/myorders.html.erb" afterPath="$PROJECT_DIR$/cafe/app/views/orders/myorders.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cafe/app/views/orders/show.html.erb" afterPath="$PROJECT_DIR$/cafe/app/views/orders/show.html.erb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,63 +19,31 @@
       <file leaf-file-name="orders_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cafe/app/controllers/orders_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myorders.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/myorders.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="30" column="96" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cafe/app/views/products/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
               <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="orders.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orders.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="54" column="26" lean-forward="false" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+            <state relative-caret-position="227">
+              <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
-                <marker date="1494020853680" expanded="true" signature="871:890" ph="..." />
+                <marker date="1494022556901" expanded="true" signature="871:890" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,7 +82,6 @@
         <option value="$PROJECT_DIR$/cafe/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/cafe/app/channels/orders_channel.rb" />
         <option value="$PROJECT_DIR$/cafe/config/routes.rb" />
-        <option value="$PROJECT_DIR$/cafe/app/controllers/orders_controller.rb" />
         <option value="$PROJECT_DIR$/cafe/app/models/order.rb" />
         <option value="$PROJECT_DIR$/cafe/db/migrate/20170502163231_create_orders.rb" />
         <option value="$PROJECT_DIR$/cafe/app/assets/stylesheets/users.scss" />
@@ -133,8 +98,9 @@
         <option value="$PROJECT_DIR$/cafe/app/views/categories/new.html.erb" />
         <option value="$PROJECT_DIR$/cafe/app/views/orders/myorders.html.erb" />
         <option value="$PROJECT_DIR$/cafe/app/views/orders/show.html.erb" />
-        <option value="$PROJECT_DIR$/cafe/app/views/orders/index.html.erb" />
         <option value="$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js" />
+        <option value="$PROJECT_DIR$/cafe/app/controllers/orders_controller.rb" />
+        <option value="$PROJECT_DIR$/cafe/app/views/orders/index.html.erb" />
       </list>
     </option>
   </component>
@@ -578,7 +544,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72069000" />
+    <option name="totallyTimeSpent" value="77160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1313" height="780" extended-state="6" />
@@ -974,18 +940,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cafe/app/views/products/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="63" />
+        <state relative-caret-position="540">
+          <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cafe/app/controllers/orders_controller.rb">
+    <entry file="file://$PROJECT_DIR$/cafe/app/views/products/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="35" column="6" lean-forward="true" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -998,32 +964,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        <state relative-caret-position="227">
+          <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+            <marker date="1494022556901" expanded="true" signature="871:890" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cafe/app/controllers/orders_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cafe/app/views/orders/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cafe/app/assets/javascripts/channels/orders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="54" column="26" lean-forward="false" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-            <marker date="1494020853680" expanded="true" signature="871:890" ph="..." />
-          </folding>
+        <state relative-caret-position="440">
+          <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

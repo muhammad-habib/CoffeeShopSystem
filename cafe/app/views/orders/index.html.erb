@@ -6,15 +6,24 @@
           <th>Order Date</th>
           <th>Name</th>
           <th>Room</th>
-          <th>Action</th>
+          <th>Order Status</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr class="<%= order.id %>">
-          <td><%= order.created_at %><%= link_to 'Show Order', order, method: :get,class: 'ui button' %></td>
+          <td><strong><%= order.created_at %></strong><%= link_to 'Show Order', order, method: :get,class: 'ui blue button' %></td>
           <td><%= order.user.username %></td>
           <td><%= order.user.room %></td>
-          <td>cancel</td>
+          <td><%= order.status %></td>
+          <td>
+            <select>
+            
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -32,5 +41,6 @@
           </span>
         <% end %>
       </div>
+      <br>
   <% end %>
 </div>
