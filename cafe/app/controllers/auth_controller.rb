@@ -7,6 +7,7 @@ class AuthController < Devise::SessionsController
   end
 
   def after_sign_in_path_for (users)
+    cookies.signed[:user_id]= current_user.id
     orders_path
   end
 

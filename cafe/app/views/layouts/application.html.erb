@@ -22,6 +22,7 @@
       <%= link_to 'Users', users_path, class: 'item' %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item right' %>
   <% elsif current_user&.admin == FALSE %>
+      <%= link_to 'My Orders', myorders_path, method: :get, class: 'item' %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item right' %>
 <% end %>
 </div>

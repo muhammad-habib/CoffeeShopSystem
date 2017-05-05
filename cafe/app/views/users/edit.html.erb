@@ -18,9 +18,19 @@
       <%= f.password_field :password %>
     </p>
 
+      <p>
+        <%= f.label :password, class: "ui label" %><br>
+        <%= f.password_field :password %>
+      </p>
+
     <p>
       <%= f.label :Admin, class: "ui label" %><br>
       <%= f.check_box :admin %>
+    </p>
+
+    <p>
+      <%= f.label :room, class: "ui label" %><br>
+      <%= f.number_field :room %>
     </p>
 
     <p>
