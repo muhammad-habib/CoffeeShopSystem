@@ -3,10 +3,10 @@
 <%= link_to 'Back', orders_path %>
 <div class="ui internally celled grid">
   <div class="row">
-    <div class="ten wide column">
+    <div class="six wide column">
       <%= render 'form', order: @order %>
     </div>
-    <div class="six wide column">
+    <div class="ten wide column">
       <div class="ui internally celled grid">
         <div class="row">
           <% @latest.each do |i| %>
@@ -24,10 +24,10 @@
             <% @products.each do |i| %>
                 <div data-id="<%= i.id %>" class="four wide column">
 
-                    <button id="<%= i.id %>" class="items" class="ui button" >
-                      <label for="name"><%= i.name %></label>
-                      <span><%= i.price %></span>
-                    </button>
+                  <button id="<%= i.id %>" class="items" class="ui button" >
+                    <label for="name"><%= i.name %></label>
+                    <span><%= i.price %></span>
+                  </button>
                 </div>
             <% end %>
           </div>
@@ -42,44 +42,44 @@
 
 
 <script type="text/javascript">
-  var list={}
-  var total=0
-  var create = function(id,name,amount){
-      item="<tr class='product' data-id="+id+">"
-      item+="<td><label>"+name+"</label></td>"
-      item+="<td><input name='product["+id+"]' type=text value="+amount+"></td>"
-      item+="<td>input for notes</td>"
-      item+="<td ><button data-id="+id+" class='remove'>remove</button></td></tr>"
-      return item
-  }
-  $(".items").click(function () {
-      console.log("clicked")
-      id=$(this).attr('id')
-      name=$("label",this).text()
-      price=$("span",this).text()
-      amount=1
-      if(!(id in list)){
-          item=create(id,name,amount)
-          console.log(name)
-          console.log("+")
-          list[id]={'id':id,'price':price, 'amount':amount, 'notes':"",'name':name}
-      }
-      else{
-          console.log("++")
-          list[id].amount+=1
-      }
-      console.log("after add",list)
-      render(list)
-  });
+    var list={}
+    var total=0
+    var create = function(id,name,amount){
+        item="<tr class='product' data-id="+id+">"
+        item+="<td><label>"+name+"</label></td>"
+        item+="<td><input name='product["+id+"]' type=text value="+amount+"></td>"
+        item+="<td>input for notes</td>"
+        item+="<td ><button data-id="+id+" class='remove'>remove</button></td></tr>"
+        return item
+    }
+    $(".items").click(function () {
+        console.log("clicked")
+        id=$(this).attr('id')
+        name=$("label",this).text()
+        price=$("span",this).text()
+        amount=1
+        if(!(id in list)){
+            item=create(id,name,amount)
+            console.log(name)
+            console.log("+")
+            list[id]={'id':id,'price':price, 'amount':amount, 'notes':"",'name':name}
+        }
+        else{
+            console.log("++")
+            list[id].amount+=1
+        }
+        console.log("after add",list)
+        render(list)
+    });
 
-  var render=function (list) {
-      $("tr").remove()
-      for(id in list){
-          item=create(list[id].id,list[id].name,list[id].amount)
-          $('#form').prepend(item)
-          total+=parseInt(list[id].price)
-          $('#total').text(total)
-      }
+    var render=function (list) {
+        $("tr").remove()
+        for(id in list){
+            item=create(list[id].id,list[id].name,list[id].amount)
+            $('#form').prepend(item)
+            total+=parseInt(list[id].price)
+            $('#total').text(total)
+        }
 
-  }
+    }
 </script>

@@ -4,7 +4,7 @@
   <title>Cafe</title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <!--<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
@@ -27,6 +27,10 @@
 <% end %>
 </div>
 
-<%= yield %>
+
+<div>
+  <%= yield %>
+</div>
+
 </body>
 </html>
