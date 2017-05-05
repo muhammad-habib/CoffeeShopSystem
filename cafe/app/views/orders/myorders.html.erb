@@ -1,4 +1,6 @@
-<h1>My Orders</h1>
+<h1>My Orders
+  <i class="list layout icon"></i>
+</h1>
 <p>
   <%= link_to 'New Order', new_order_path, class: 'ui green button' %>
 </p>
@@ -19,18 +21,24 @@
     <tr>
       <th>Order Date</th>
       <th>Status</th>
-      <th>Amount</th>
+      <th>Order Cost</th>
       <th>Action</th>
     </tr>
     </thead>
-
     <tbody>
     <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at %></td>
+          <td><%= order.created_at %> <%= link_to 'Show Order', order, method: :get,class: 'ui button' %> </td>
           <td><%= order.status %></td>
-          <td><%= order.room %></td>
-          <td><%= link_to 'Edit', edit_order_path(order) %>
+          <td>
+            <% @sum = 0 %>
+            <% order.products.each do |product|  %>
+                <% @sum = @sum + product.price * order.orders_products.where(:product_id => product.id).collect(&:amount)[0] %>
+            <% end %>
+            <%= @sum.to_s + " L.E " %>
+
+          </td>
+          <td>
             <%= link_to 'Cancel', order, method: :delete, data: {confirm: 'Are you sure?'},class: 'ui red button' %></td>
         </tr>
     <% end %>
