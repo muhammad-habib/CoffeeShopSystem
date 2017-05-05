@@ -20,11 +20,22 @@
           </ul>
         </div>
     <% end %>
-
-    <!--<div class="field">-->
-      <!--<%= f.label :room %>-->
-      <!--<%= f.number_field :room %>-->
-    <!--</div>-->
+<%if action_name=='edit'%>
+<%@latest.each do |i| %>
+        <tr class="product" data-id="<%=i.id %>">
+          <td>
+            <label for=""><%=i.name%></label>
+          </td>
+          <td>
+            <input type="text" name="product[2]" value="1">
+          </td>
+          <td>input for notes</td>
+          <td>
+            <button data-id="2" class="remove">remove</button>
+          </td>
+        </tr>
+    <%end%>
+    <%end%>
 
     <div class="field">
       <%= f.label :room %>

@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @latest=Order.last.products.all
     @products=Product.where(:is_available => true)
     @rooms=User.all.collect(&:room)
 
@@ -36,6 +37,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @products=Product.where(:is_available => true)
+    @latest=Order.last.products.all
+    @rooms=User.all.collect(&:room)
   end
 
   # POST /orders

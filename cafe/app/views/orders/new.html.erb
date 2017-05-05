@@ -9,8 +9,14 @@
     <div class="six wide column">
       <div class="ui internally celled grid">
         <div class="row">
-          <% @rooms.each do |i| %>
-          <p><%=i%></p>
+          <% @latest.each do |i| %>
+              <div data-id="<%= i.id %>" class="four wide column">
+
+                <button id="<%= i.id %>" class="items" class="ui button" >
+                  <label for="name"><%= i.name %></label>
+                  <span><%= i.price %></span>
+                </button>
+              </div>
           <%end%>
         </div>
         <div class="row ">
