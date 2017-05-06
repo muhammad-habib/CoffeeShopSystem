@@ -63,6 +63,8 @@ class ProductsController < ApplicationController
     else
       @product.update_attributes(is_available: true)
     end
+    ActionCable.server.broadcast 'products',
+                                 product: @product.to_json
     redirect_to products_path
   end
 
