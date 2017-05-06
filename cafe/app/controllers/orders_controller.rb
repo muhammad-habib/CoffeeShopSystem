@@ -114,7 +114,6 @@ class OrdersController < ApplicationController
                                  action:'delete'
   end
 
-
   def changeStatus
     @order = params
     puts params.inspect
