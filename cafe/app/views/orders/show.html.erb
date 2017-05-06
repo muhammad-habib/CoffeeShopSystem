@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Room:</strong>
-  <%= @order.room %>
-</p>
+<h1>Order Details:
+  <i class="sticky note outline icon"></i>
+</h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
+<div class="ui container">
+  <p>
+    <strong>Room:</strong>
+    <%= @order.room %>
+  </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <p>
+    <strong>Customer:</strong>
+    <%= @order.user.username %>
+  </p>
+
+
+    <strong>Products:</strong><br>
+
+    <% @order.products.each do |product| %>
+      <strong><%= @order.orders_products.where(:product_id => product.id).collect(&:amount)[0] %></strong>
+        <%= product.name %>
+        <br>
+    <% end %>
+<br>
+  <strong>Total Cost:</strong>
+  <% @sum = 0 %>
+  <% @order.products.each do |product|  %>
+      <% @sum = @sum + product.price * @order.orders_products.where(:product_id => product.id).collect(&:amount)[0] %>
+  <% end %>
+  <strong><%= @sum.to_s + " L.E " %></strong>
+<br>
+<br>
+  <%= link_to 'Back', orders_path, class: 'ui blue button' %>
+  <%= link_to 'Edit', edit_order_path(@order), class: 'ui green button' %>
+
+</div>

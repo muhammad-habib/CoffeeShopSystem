@@ -59,6 +59,12 @@ class OrdersController < ApplicationController
           orderProducts.amount = value
           orderProducts.save
         end
+        ActionCable.server.broadcast 'orders',
+                                     order: @order.to_json,
+                                     user: @order.user.to_json,
+                                     products: @order.products.to_json,
+                                     productsAmount: productsAmount,
+                                     action:'add'
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -91,8 +97,8 @@ class OrdersController < ApplicationController
       format.json {head :no_content}
     end
     ActionCable.server.broadcast 'orders',
-                                 order: @order.to_json
-
+                                 order: @order.to_json,
+                                 action:'delete'
   end
 
   private

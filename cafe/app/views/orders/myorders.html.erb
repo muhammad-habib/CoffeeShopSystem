@@ -1,4 +1,6 @@
-<h1>My Orders</h1>
+<h1>My Orders
+  <i class="list layout icon"></i>
+</h1>
 <p>
   <%= link_to 'New Order', new_order_path, class: 'ui green button' %>
 </p>
@@ -23,11 +25,10 @@
       <th>Action</th>
     </tr>
     </thead>
-
     <tbody>
     <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at %></td>
+          <td><%= order.created_at %> <%= link_to 'Show Order', order, method: :get,class: 'ui button' %> </td>
           <td><%= order.status %></td>
           <td>
             <% @sum = 0 %>
