@@ -55,15 +55,17 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     productsAmount = params[:product]
+    #puts "$$$",order_params[:user_id]
+    owner=params[:user_id]
     params=order_params
-    params[:user_id] = current_user.id
+    params[:user_id] = owner
     @order = Order.new(params)
     respond_to do |format|
       if @order.save
         productsAmount.each do |key, value|
           orderProducts = OrdersProduct.new()
-          puts '|||||||||||||||||||'
-          puts value[:amount],value[:notes]
+          #puts '|||||||||||||||||||'
+          #puts value[:amount],value[:notes]
           orderProducts.product_id = key
           orderProducts.order_id = @order.id
           orderProducts.amount = value[:amount]
@@ -120,7 +122,7 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:room)
+    params.require(:order).permit(:room, :user_id)
   end
 
   def selected_date(symbol)

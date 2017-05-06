@@ -73,8 +73,9 @@
     $('.dropdown')
         .dropdown({
             action: 'activate',
-            onChange: function(value, text) {
-                console.log(value, text)
+            onChange: function(value) {
+                console.log(value)
+                $("#hidden").val(value)
             }
         })
     ;
