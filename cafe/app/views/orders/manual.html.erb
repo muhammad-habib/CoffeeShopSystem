@@ -12,36 +12,8 @@
       <div class="ui internally celled grid">
         <div class="row">
           <div class="sixteen wide column">
-            <div class="ui styled accordion">
-              <div class="title">
-                <i class="dropdown icon"></i>
-                Latest order
-              </div>
-              <div class="content">
-                <div class="ui segments">
-                  <div class="ui segment">
-                    <div class="ui grid" >
-                      <% unless Order.all.empty?%>
-                          <% @latest.each do |i| %>
-                              <div data-id="<%= i.id %>" class="four wide column">
-                                <div id="<%= i.id %>" class="ui card items"  >
-                                  <div class="image">
-                                    <%= image_tag( i.image.url, :class => "ui medium image") %>
-                                  </div>
-                                  <div class="ui bottom attached content">
-                                    <label><%= i.name%></label>
-                                    <span for="" style="float: right"><%= i.price%></span>
-                                  </div>
 
-                                </div>
-                              </div>
-                          <%end%>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
 
         </div>
