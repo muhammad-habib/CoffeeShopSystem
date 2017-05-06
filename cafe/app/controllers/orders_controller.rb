@@ -45,12 +45,14 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     productsAmount= params[:product]
+
     params=order_params
     params[:user_id]=current_user.id
     @order = Order.new(params)
     respond_to do |format|
       if @order.save
         productsAmount.each do |key, value|
+          puts "=======>",key,value
           orderProducts = OrdersProduct.new()
           orderProducts.product_id = key
           orderProducts.order_id = @order.id
