@@ -70,12 +70,22 @@
 
 
 <script type="text/javascript">
+  rooms={}
+
+      <%User.all.each do |i|%>
+        rooms[<%=i.id%>]= <%=i.room%>
+      <%end%>
+      console.log(rooms)
     $('.dropdown')
         .dropdown({
             action: 'activate',
             onChange: function(value) {
                 console.log(value)
                 $("#hidden").val(value)
+                $('select').val(rooms[value]);
+
+
+
             }
         })
     ;
