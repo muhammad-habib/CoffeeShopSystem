@@ -1,8 +1,12 @@
+<div class="ui  grid">
+  <div class="eight wide column">
 <div class="ui container">
 <h1>Editing Category</h1>
 
 <%= render 'form', category: @category %>
 
-<%= link_to 'Show', @category , class: 'ui blue button'%>
-<%= link_to 'Back', categories_path, class: 'ui black button' %>
+<%= link_to 'Show', @category , class: 'ui blue button',style: "float :right"%>
+<%= link_to 'Back', categories_path, class: 'ui black button',style: "float :right" %>
+</div>
+  </div>
 </div>
