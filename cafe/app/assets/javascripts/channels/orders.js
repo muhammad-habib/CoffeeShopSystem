@@ -79,6 +79,19 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                 '</table>' +
                 '<div class="' + order.id + '">' + productsItems + '</div>';
             $('#admin_orders').append(item);
+            $("table").off();
+            $("table").on("change", ".changeStatus", function(event){
+                console.log("dddddddddd");
+                $.ajax({
+                    url: "/changeStatus",
+                    data: {
+                        user: $(this).data('user'),
+                        order: $(this).data('id'),
+                        status: $(this).val()
+                    },
+                    method: 'GET'
+                })
+            });
         }
     },
     renderMessage: function (data) {

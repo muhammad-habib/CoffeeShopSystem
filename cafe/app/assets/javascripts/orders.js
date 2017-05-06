@@ -4,8 +4,9 @@
 $(document).ready(function () {
 
 
-    $("document").on( "change",'.changeStatus', function() {
-        console.log("ddddddd")
+
+    $("table").on("change", ".changeStatus", function(event){
+        console.log("dddddddddd");
         $.ajax({
             url: "/changeStatus",
             data: {
