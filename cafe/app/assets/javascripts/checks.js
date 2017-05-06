@@ -109,9 +109,11 @@ function getChecksAll() {
 				res+='</tbody></table>'
 				res+='</div>'
 				res+='</div>'
+
 				res+='</div>'
 				res+='</div>'
 				result+='<div class="title"><i class="dropdown icon"></i><span style="float:left">'+username+"</span><span style='float:right'> Total Amount: "+totalAmount+' LE </span> </div><div class="content">'+res+"</div></div>";
+
 			}
 		});
 		user_orders.innerHTML=result; //+'<script type="text/javascript">'+ "$('.ui.accordion').accordion();"+'</script>';
