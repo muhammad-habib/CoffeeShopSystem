@@ -15,13 +15,7 @@
           <td><strong><%= order.created_at %></strong><%= link_to 'Show Order', order, method: :get,class: 'ui blue button' %></td>
           <td><%= order.user.username %></td>
           <td><%= order.user.room %></td>
-<<<<<<< HEAD
-          <td><%= select( "Order",'status',Order::statuses) %></td>
-=======
-          <td><%= order.status %></td>
-          <td>
-           Select Menu
->>>>>>> a9c4e012cfccfdea0ac8c80329f62becb57338a3
+          <td><%= select( "Order",'status',Order::statuses,{}, :"data-id" => order.id  ,:class => "changeStatus" , :"data-user" => order.user_id) %></td>
         </tr>
         </tbody>
       </table>

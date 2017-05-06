@@ -3,6 +3,7 @@
  */
 App.messages = App.cable.subscriptions.create('OrdersChannel', {
     received: function (data) {
+        console.log(data);
         order = JSON.parse(data.order);
         if (data.action == 'delete')
             $('.' + order.id).remove();

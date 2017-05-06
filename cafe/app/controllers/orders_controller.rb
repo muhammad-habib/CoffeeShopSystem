@@ -112,6 +112,17 @@ class OrdersController < ApplicationController
                                  action:'delete'
   end
 
+
+  def changeStatus
+    @order = params
+    puts params.inspect
+    ActionCable.server.broadcast "orders_#{params[:user]}",
+                                 order: @order.to_json,
+                                 action:'status'
+
+    render html: '<div>html goes here</div>'.html_safe
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_order
