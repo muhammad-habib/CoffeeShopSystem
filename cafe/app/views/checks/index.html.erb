@@ -10,9 +10,9 @@
         <%= f.select :user_id, User.all.collect{|user| [user.email , user.id]} ,{include_blank: true },Onclick:'getChecks()' %>
         <% f.submit 'Search', class: 'ui blue button' -%>
 
+<% end %>
 
 
 <div id="user_orders">
 	
 </div>
-<% end %>

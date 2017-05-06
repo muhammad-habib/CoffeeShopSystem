@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20170506115718) do
     t.string   "username"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false
     t.string   "image"
+    t.boolean  "admin",                  default: false
     t.integer  "room"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

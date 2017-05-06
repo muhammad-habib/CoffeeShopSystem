@@ -7,6 +7,24 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
         order = JSON.parse(data.order);
         if (data.action == 'delete')
             $('.' + order.id).remove();
+        else if (data.action == 'status'){
+            switch (parseInt(order.status)) {
+                case 0:
+                    status = "Received";
+                    break;
+                case 1:
+                    status = "In Progress";
+                    break;
+                case 2:
+                    status = "On The Way";
+                    break;
+                case 3:
+                    status = "Delivered";
+                    break;
+            }
+            $('#'+order.order).html(status);
+            $('[id="mystatus_'+order.order+'"]').remove();
+        }
         else if (data.action == 'add') {
             user = JSON.parse(data.user);
             products = JSON.parse(data.products);

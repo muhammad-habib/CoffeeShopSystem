@@ -15,7 +15,8 @@
           <td><strong><%= time_ago_in_words(order.created_at) %></strong><%= link_to 'Show Order', order, method: :get,class: ' circular ui icon  button',style: 'float: right;' %></td>
           <td><%= order.user.username %></td>
           <td><%= order.user.room %></td>
-          <td><%= select( "Order",'status',Order::statuses,{}, :"data-id" => order.id  ,:class => "changeStatus" , :"data-user" => order.user_id) %></td>
+
+          <td><%= select( "Order",'status',Order::statuses{},{}, :"data-id" => order.id ,:selected =>order.status  ,:class => "changeStatus" , :"data-user" => order.user_id) %></td>
         </tr>
         </tbody>
       </table>

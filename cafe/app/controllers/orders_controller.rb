@@ -117,7 +117,9 @@ class OrdersController < ApplicationController
 
   def changeStatus
     @order = params
-    puts params.inspect
+    @myorder = Order.find(params['order'])
+    @myorder.status = params['status'].to_i
+    @myorder.save
     ActionCable.server.broadcast "orders_#{params[:user]}",
                                  order: @order.to_json,
                                  action:'status'
