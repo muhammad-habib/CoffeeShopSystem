@@ -3,84 +3,139 @@
 <%= link_to 'Back', orders_path %>
 <div class="ui internally celled grid">
   <div class="row">
-    <div class="ten wide column">
-      <%= render 'form', order: @order %>
-    </div>
     <div class="six wide column">
+      <div class="ui segment">
+      <%= render 'form', order: @order %>
+      </div>
+    </div>
+    <div class="ten wide column">
       <div class="ui internally celled grid">
         <div class="row">
-        <% unless Order.all.empty?%>
-          <% @latest.each do |i| %>
-              <div data-id="<%= i.id %>" class="four wide column">
-                <button id="<%= i.id %>" class="items" class="ui button" >
-                  <label for="name"><%= i.name %></label>
-                  <span><%= i.price %></span>
-                </button>
+          <div class="sixteen wide column">
+            <div class="ui styled accordion">
+              <div class="title">
+                <i class="dropdown icon"></i>
+                Latest order
               </div>
-          <%end%>
-        <% end %>
+              <div class="content">
+                <div class="ui segments">
+                  <div class="ui segment">
+                    <div class="ui grid" >
+                      <% unless Order.all.empty?%>
+                          <% @latest.each do |i| %>
+                              <div data-id="<%= i.id %>" class="four wide column">
+                                <div id="<%= i.id %>" class="ui card items"  >
+                                  <div class="image">
+                                    <%= image_tag( i.image.url, :class => "ui medium image") %>
+                                  </div>
+                                  <div class="ui bottom attached content">
+                                    <label><%= i.name%></label>
+                                    <span for="" style="float: right"><%= i.price%></span>
+                                  </div>
+
+                                </div>
+                              </div>
+                          <%end%>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div>
+
         </div>
-        <div class="row ">
-          <div class="ui grid">
+        <div class="row">
+        <div class="ui segments">
+          <div class="ui segment">
+            <h3>our products</h3>
+          </div>
+          <div class="ui segments">
+            <div class="ui segment">
+              <div class="ui grid" style="height: 500px; overflow-y: auto;">
             <% @products.each do |i| %>
                 <div data-id="<%= i.id %>" class="four wide column">
 
-                    <button id="<%= i.id %>" class="items" class="ui button" >
-                      <label for="name"><%= i.name %></label>
-                      <span><%= i.price %></span>
-                    </button>
+                  <div id="<%= i.id %>" class="ui card items"  >
+
+                    <div class="image">
+                      <%= image_tag( i.image.url, :class => "ui medium image") %>
+                    </div>
+                    <div class="ui bottom attached content">
+
+                      <p>
+                      <label for=""><%= i.name%></label>
+                      <span for="" style="float: right"><%= i.price%></span>
+                      </p>
+                    </div>
+
+                  </div>
                 </div>
             <% end %>
           </div>
         </div>
       </div>
-
+      </div>
     </div>
-
+    </div>
+  </div>
   </div>
 </div>
 
 
 
 <script type="text/javascript">
-  var list={}
-  var total=0
-  var create = function(id,name,amount){
-      item="<tr class='product' data-id="+id+">"
-      item+="<td><label>"+name+"</label></td>"
-      item+="<td><input name='product["+id+"]' type=text value="+amount+"></td>"
-      item+="<td>input for notes</td>"
-      item+="<td ><button data-id="+id+" class='remove'>remove</button></td></tr>"
-      return item
-  }
-  $(".items").click(function () {
-      console.log("clicked")
-      id=$(this).attr('id')
-      name=$("label",this).text()
-      price=$("span",this).text()
-      amount=1
-      if(!(id in list)){
-          item=create(id,name,amount)
-          console.log(name)
-          console.log("+")
-          list[id]={'id':id,'price':price, 'amount':amount, 'notes':"",'name':name}
-      }
-      else{
-          console.log("++")
-          list[id].amount+=1
-      }
-      console.log("after add",list)
-      render(list)
-  });
+    $('.ui.accordion')
+        .accordion()
+    ;
+    var list={};
+    var total=0;
+    var create = function(id,name,amount){
+        item="<tr class='product' data-id="+id+">"
+        item+="<td><label>"+name+"</label></td>"
+        item+="<td><input name='product["+id+"][amount]' type=text value="+amount+"></td>"
+        item+="<td colspan='2'><button data-id="+id+" class='more  circular ui icon button  '><i class='plus icon'></i></button><button data-id="+id+" class='less circular ui icon button '><i class='minus icon'></i></button></td>"
+        item+="<td><label><i class='pound icon'></i></label><label class='money' data-id="+id+"></label></td>"
+        item+="<td ><button data-id="+id+" class='circular ui icon button remove'><i class='remove icon'></i></button></td></tr>"
 
-  var render=function (list) {
-      $("tr").remove()
-      for(id in list){
-          item=create(list[id].id,list[id].name,list[id].amount)
-          $('#form').prepend(item)
-          total+=parseInt(list[id].price)
-          $('#total').text(total)
-      }
+        item+="<tr class='notes'><td colspan='5'>"
+        item+="<input name='product["+id+"][notes]' type=text placeholder='notes for "+name+"' value=''><td></tr>"
+        return item
+    }
+    $(".items").click(function () {
+        console.log("clicked")
+        id=$(this).attr('id')
+        name=$("label",this).text()
+        price=$("span",this).text()
+        amount=1
+        if(!(id in list)){
+            item=create(id,name,amount)
+            console.log(name)
+            console.log("+")
+            list[id]={'id':id,'price':price, 'amount':amount, 'notes':"",'name':name}
+        }
+        else{
+            console.log("++")
+            list[id].amount+=1
+        }
+        console.log("after add",list)
+        render(list)
+    });
 
-  }
+
+    var render=function (list) {
+        $("tr").remove()
+        total=0
+        for(id in list){
+            item=create(list[id].id,list[id].name,list[id].amount)
+            $('#holder').prepend(item)
+            console.log("price:",list[id].price,"amount:",list[id].amount)
+            total+=parseInt(list[id].price)*parseInt(list[id].amount)
+            $('#total').text(total)
+            $(".money[data-id="+list[id].id+"]").text(parseInt(list[id].price)*parseInt(list[id].amount))
+        }
+
+    }
 </script>
