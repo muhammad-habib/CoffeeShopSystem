@@ -37,7 +37,7 @@
   <%= f.label :room %>
   <%=select_tag "order[room]", options_for_select(@rooms,current_user.room)%>
 </div></tr>
-    <%= hidden_field_tag "user_id", '2' ,:id=>"hidden" %>
+    <%= hidden_field_tag "user_id", current_user.id ,:id=>"hidden" %>
 <tr>
   <h1>total :<i class='pound icon'></i><span id="total"></span></h1>
 </tr>
