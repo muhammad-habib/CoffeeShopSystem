@@ -1,0 +1,21 @@
+<h1>Check Specific User Orders</h1>
+
+	<%= form_for :checkallpost, url: checks_checkallpost_path ,method: :post   do |f| -%>
+	<%= f.label :Start_Date, class: "ui label" %>
+    <%= f.date_field :start_date,{include_blank: false } %>
+    <%= f.label :End_Date, class: "ui label" %>
+    <%= f.date_field :end_date ,{include_blank: false ,:Onchange => "javascript: getChecksAll()"} %>
+    <%= f.submit 'Search', class: 'ui blue button' %>
+        
+
+
+
+<div id="user_orders">
+	
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+	$('.ui.accordion').accordion();
+</script>
