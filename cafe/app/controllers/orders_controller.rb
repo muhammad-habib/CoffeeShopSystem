@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def index
     if current_user.admin
       @orders = Order.all
+      puts current_user.username
     else
       return redirect_to myorders_path
     end
