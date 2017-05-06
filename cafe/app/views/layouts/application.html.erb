@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
   <%= action_cable_meta_tag %>
+
 </head>
 
 <body>
@@ -23,10 +24,12 @@
       <%= link_to 'Manual Order', manual_orders_path, class: 'item' %>
 
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item right' %>
+      <label class="item" for=""><%=current_user.username%></label>
       <%= image_tag( current_user.image.url, :class => "ui avatar image ") %>
   <% elsif current_user&.admin == FALSE %>
       <%= link_to 'My Orders', myorders_path, method: :get, class: 'item' %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item right' %>
+      <label class="item" for=""><%=current_user.username%></label>
       <%= image_tag( current_user.image.url, :class => "ui avatar image ") %>
 
 <% end %>

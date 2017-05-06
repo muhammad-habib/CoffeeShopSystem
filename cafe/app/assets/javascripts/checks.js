@@ -109,6 +109,7 @@ function getChecksAll() {
 				res+='</div>'
 				res+='</div>'
 			result+='<div class="title active"><i class="dropdown icon"></i><span style="float:left">'+username+"</span><span style='float:right'> Total Amount: "+totalAmount+' LE </span> </div><div class="content">'+res+"</div></div>";
+
 			}
 		});
 		// result+="</div>"
