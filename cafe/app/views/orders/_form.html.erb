@@ -64,6 +64,7 @@
       delete list[$(this).data('id')]
         console.log("after remove",list)
       render(list)
+        return false
     });
 
     $(document).on("click",".more",function () {
@@ -72,13 +73,21 @@
         list[$(this).data('id')].amount+=1
 
         render(list)
+        return false
     });
 
     $(document).on("click",".less",function () {
         console.log("less",list[$(this).data('id')].name)
-        list[$(this).data('id')].amount-=1
+        if(list[$(this).data('id')].amount>1){
+            list[$(this).data('id')].amount-=1
+            render(list)
 
-        render(list)
-    });
+        }
+        else{
+            console.log("this is the minimum")
+        }
+        return false
+
+ });
 
 </script>
