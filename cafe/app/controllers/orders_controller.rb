@@ -34,6 +34,18 @@ class OrdersController < ApplicationController
     puts @rooms
   end
 
+  # GET /orders/manual
+  def manual
+    @order = Order.new
+    unless Order.all.empty?
+      @latest=Order.last.products.all
+    end
+    @products=Product.where(:is_available => true)
+    @rooms=User.all.collect(&:room)
+
+
+  end
+
   # GET /orders/1/edit
   def edit
     @products=Product.where(:is_available => true)
