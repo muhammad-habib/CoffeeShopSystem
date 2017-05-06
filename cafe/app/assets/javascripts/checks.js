@@ -69,24 +69,25 @@ function getChecksAll() {
 			console.log(user_orders)
 			if(user_orders!=null && user_orders[0].length>0){
 				username=user_orders[1];
-				result+='<div class="ui styled accordion">';
+				result+='<div class="ui  accordion">';
 				tmp=user_orders[0][0].order_id;
 				// order start tag
-				res+='<div class="ui styled accordion">'
+				res+='<div class="ui  accordion">'
 				res+='<div class="title active"><i class="dropdown icon"></i>'+" Order_Date  "+user_orders[0][0].created_at+"</div>";
 				// order content tag
 				res+='<div class="content active">';
-				res+='<table  class="ui single line table"><thead><tr><th>Product Name</th><th>Product Price</th><th>Product Note</th><th>Product Amount</th></tr> </thead><tbody>';
+				res+='<table  class="ui single line table"><thead><tr><th>Product Name</th>'+
+				'<th>Product Price</th><th>Product Note</th><th>Product Amount</th></tr> </thead><tbody>';
 				totalAmount=0;
 				orderAmount=0;
 				user_orders[0].forEach( function(product) {
 					console.log(product)
 					if(tmp!=product.order_id){
-						res+='<tr><td colspan="4"> Total Order Amount Is:  '+orderAmount+' LE</td></tr>'
-						res+='<tbody></table>'
+						res+='<tr style="background-color:#80ff80"><td colspan="4"> Total Order Amount Is:  '+orderAmount+' LE</td></tr>'
+						res+='</tbody></table>'
 						res+='</div>'
 						res+='</div>'
-						res+='<div class="ui styled accordion">'
+						res+='<div class="ui  accordion">'
 						// order start tag
 						res+='<div class="title "><i class="dropdown icon"></i>'+" Order_Date  "+Date(product.created_at)+"</div>";
 						// order content tag
@@ -105,15 +106,20 @@ function getChecksAll() {
 						res+='</tr>'
 					}
 				});
-				res+='<tbody></table>'
+				res+='</tbody></table>'
 				res+='</div>'
 				res+='</div>'
-			result+='<div class="title active"><i class="dropdown icon"></i><span style="float:left">'+username+"</span><span style='float:right'> Total Amount: "+totalAmount+' LE </span> </div><div class="content">'+res+"</div></div>";
+				res+='</div>'
+				res+='</div>'
+				result+='<div class="title"><i class="dropdown icon"></i><span style="float:left">'+username+"</span><span style='float:right'> Total Amount: "+totalAmount+' LE </span> </div><div class="content">'+res+"</div></div>";
 			}
 		});
-		// result+="</div>"
-		// user_orders.innerHTML=res
-		user_orders.innerHTML=result+'<script type="text/javascript">'+ "$('.ui.accordion').accordion();"+'</script>';
+		user_orders.innerHTML=result; //+'<script type="text/javascript">'+ "$('.ui.accordion').accordion();"+'</script>';
+		console.log(result)
+		$('.ui.accordion').accordion();
+		$('.ui.accordion').accordion();
+		$('.ui.accordion').accordion();
+		console.log($('.ui.accordion').accordion())
 	})
 	.fail(function(response) {
 		console.log(response);
