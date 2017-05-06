@@ -5,8 +5,8 @@
 </h1>
 <div class="ui container">
   <%= link_to 'New Product', new_product_path, class: 'ui green button' %>
-<table class="ui single line table">
-  <thead>
+  <table class="ui single line table">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Price</th>
@@ -14,23 +14,23 @@
       <th>Category</th>
       <th>Actions</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.is_available %></td>
-        <td><%= product.category.name %></td>
-        <td><%= link_to "Available", is_available_product_path(product.id),class: 'ui grey button',method: :get %>
-        <%= link_to 'Show', product, class: 'ui blue button' %>
-        <%= link_to 'Edit', edit_product_path(product), class: 'ui green button' %>
-        <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class: 'ui red button'%></td>
-      </tr>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.is_available %></td>
+          <td><%= product.category.name %></td>
+          <td><%= link_to "Available", is_available_product_path(product.id), class: 'ui grey button', method: :get %>
+            <%= link_to 'Show', product, class: 'ui blue button' %>
+            <%= link_to 'Edit', edit_product_path(product), class: 'ui green button' %>
+            <%= link_to 'Delete', product, method: :delete, data: {confirm: 'Are you sure?'}, class: 'ui red button' %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 </div>
