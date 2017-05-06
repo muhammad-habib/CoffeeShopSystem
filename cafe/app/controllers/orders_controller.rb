@@ -37,9 +37,7 @@ class OrdersController < ApplicationController
   # GET /orders/manual
   def manual
     @order = Order.new
-    unless Order.all.empty?
-      @latest=Order.last.products.all
-    end
+    @users = User.all
     @products=Product.where(:is_available => true)
     @rooms=User.all.collect(&:room)
 
@@ -64,9 +62,12 @@ class OrdersController < ApplicationController
       if @order.save
         productsAmount.each do |key, value|
           orderProducts = OrdersProduct.new()
+          puts '|||||||||||||||||||'
+          puts value[:amount],value[:notes]
           orderProducts.product_id = key
           orderProducts.order_id = @order.id
           orderProducts.amount = value[:amount]
+          orderProducts.notes = value[:notes]
           orderProducts.save
         end
         ActionCable.server.broadcast 'orders',
