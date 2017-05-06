@@ -41,7 +41,7 @@ class ChecksController < ApplicationController
 				INNER JOIN products p ON p.id= o.product_id
                 WHERE o.order_id= #{order.id}")
      		if @products.empty?
-     			@products [order.user_id] = [pro,order.username]    	
+     			@products[order.user_id]= [pro,order.username]
  			else
 	     		if @products[order.user_id].nil?
 	            	@products[order.user_id]= [pro,order.username ]    	

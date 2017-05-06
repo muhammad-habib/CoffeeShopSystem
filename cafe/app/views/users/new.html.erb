@@ -1,43 +1,46 @@
-<div class="ui container">
-  <h1>Adding User
+<div class="ui  grid">
+  <div class="eight wide column">
+  <h1>Add User
     <i class="add user icon"></i>
   </h1>
 
-<%= form_for :user,html: { multipart: true } , url: users_path do |f| %>
+<%= form_for :user,html: { multipart: true ,:class=>"ui form"} , url: users_path do |f| %>
 
-    <p>
-      <%= f.label :UserName, class: "ui label" %><br>
+    <div class="field">
+      <%= f.label :UserName, class: "ui label",style:"float: left;" %><br>
       <%= f.text_field :username %>
-    </p>
+    </div>
 
-    <p>
-      <%= f.label :Email, class: "ui label" %><br>
+    <div class="field">
+      <%= f.label :Email, class: "ui label",style:"float: left;" %><br>
       <%= f.email_field :email %>
-    </p>
+    </div>
 
-    <p>
-      <%= f.label :password, class: "ui label" %><br>
+    <div class="field">
+      <%= f.label :password, class: "ui label",style:"float: left;" %><br>
       <%= f.password_field :password %>
-    </p>
+    </div>
 
-      <p>
-        <%= f.label :room, class: "ui label" %><br>
+      <div class="field">
+        <%= f.label :room, class: "ui label",style:"float: left;" %><br>
         <%= f.number_field :room %>
-      </p>
+      </div>
 
-      <p>
-      <%= f.label :image, class: "ui label" %><br>
+      <div class="field">
+      <%= f.label :image, class: "ui label",style:"float: left;" %><br>
       <%= f.file_field :image %>
-      </p>
+      </div>
 
-    <p>
-      <%= f.label :Admin, class: "ui label" %><br>
+    <div class="ui checkbox field">
+
       <%= f.check_box :admin %>
-    </p>
+      <%= f.label :Admin, class: "ui label"%><br>
+    </div>
 
-    <p>
+    <div>
       <%= f.submit "Save", :class => 'ui green button' %>
       <%= link_to 'Back', users_path , class: 'ui black button' %>
-    </p>
+    </div>
 <% end %>
+</div>
 </div>
