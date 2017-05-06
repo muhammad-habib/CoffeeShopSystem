@@ -5,10 +5,15 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
-  resources :orders
+  resources :orders do
+    collection do
+      get 'manual'
+    end
+  end
   resources :products do
     member do
       get 'is_available'
+
     end
   end
   resources :categories

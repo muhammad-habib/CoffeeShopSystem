@@ -11,4 +11,5 @@ class Order < ApplicationRecord
   def default_values
     self.status ||= "Delivered"
   end
+
 end

@@ -34,6 +34,16 @@ class OrdersController < ApplicationController
     puts @rooms
   end
 
+  # GET /orders/manual
+  def manual
+    @order = Order.new
+    @users = User.all
+    @products=Product.where(:is_available => true)
+    @rooms=User.all.collect(&:room)
+
+
+  end
+
   # GET /orders/1/edit
   def edit
     @products=Product.where(:is_available => true)
@@ -52,9 +62,12 @@ class OrdersController < ApplicationController
       if @order.save
         productsAmount.each do |key, value|
           orderProducts = OrdersProduct.new()
+          puts '|||||||||||||||||||'
+          puts value[:amount],value[:notes]
           orderProducts.product_id = key
           orderProducts.order_id = @order.id
           orderProducts.amount = value[:amount]
+          orderProducts.notes = value[:notes]
           orderProducts.save
         end
         ActionCable.server.broadcast 'orders',
