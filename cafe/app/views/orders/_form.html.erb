@@ -6,8 +6,6 @@
     <table  class="ui single line table">
 
       <tbody id="holder">
-
-
     <% if order.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -39,7 +37,7 @@
   <%= f.label :room %>
   <%=select_tag "order[room]", options_for_select(@rooms,current_user.room)%>
 </div></tr>
-    <%= hidden_field_tag "user_id", '2' ,:id=>"hidden" %>
+    <%= hidden_field_tag "user_id", current_user.id ,:id=>"hidden" %>
 <tr>
   <h1>total :<i class='pound icon'></i><span id="total"></span></h1>
 </tr>

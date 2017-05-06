@@ -13,6 +13,17 @@
         <div class="row">
           <div class="sixteen wide column">
 
+            <!--<%= collection_select(:user, :user_id, User.all,:id, :username,{}, {:class=>'drop'}) %>-->
+            <div class="ui fluid  search selection dropdown">
+              <input type="hidden" name="country">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select User</div>
+              <div class="menu">
+
+              <%User.all.each do |user|%>
+                  <div class="item" data-value="<%=user.id%>"> <%= image_tag( user.image.url, :class => "ui avatar image") %><%=user.username%></div>
+              <%end%>
+            </div>
 
           </div>
 
@@ -30,7 +41,7 @@
                 <% @products.each do |i| %>
                     <div data-id="<%= i.id %>" class="four wide column">
 
-                      <div id="<%= i.id %>" class="ui card items"  >
+                      <div id="<%= i.id %>" class="ui card product"  >
 
                         <div class="image">
                           <%= image_tag( i.image.url, :class => "ui medium image") %>
@@ -59,8 +70,14 @@
 
 
 <script type="text/javascript">
-    $('.ui.accordion')
-        .accordion()
+    $('.dropdown')
+        .dropdown({
+            action: 'activate',
+            onChange: function(value) {
+                console.log(value)
+                $("#hidden").val(value)
+            }
+        })
     ;
     var list={}
     var total=0
@@ -76,7 +93,7 @@
         item+="<input name='product["+id+"][notes]' type=text placeholder='notes for "+name+"' value=''><td></tr>"
         return item
     }
-    $(".items").click(function () {
+    $(".product").click(function () {
         console.log("clicked")
         id=$(this).attr('id')
         name=$("label",this).text()

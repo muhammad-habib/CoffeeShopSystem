@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :users
   root :to =>'orders#index'
   get '/myorders', to: "orders#myorders"
+  get '/changeStatus', to: "orders#changeStatus"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
