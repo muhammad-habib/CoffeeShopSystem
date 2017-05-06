@@ -92,7 +92,7 @@
     var list={}
     var total=0
     var create = function(id,name,amount){
-        item="<tr class='product' data-id="+id+">"
+        item="<tr class='item' data-id="+id+">"
         item+="<td><label>"+name+"</label></td>"
         item+="<td><input name='product["+id+"][amount]' type=text value="+amount+"></td>"
         item+="<td colspan='2'><button data-id="+id+" class='more  circular ui icon button  '><i class='plus icon'></i></button><button data-id="+id+" class='less circular ui icon button '><i class='minus icon'></i></button></td>"
@@ -103,7 +103,8 @@
         item+="<input name='product["+id+"][notes]' type=text placeholder='notes for "+name+"' value=''><td></tr>"
         return item
     }
-    $(".product").click(function () {
+  $(document).on("click",".product",function () {
+
         console.log("clicked")
         id=$(this).attr('id')
         name=$("label",this).text()
