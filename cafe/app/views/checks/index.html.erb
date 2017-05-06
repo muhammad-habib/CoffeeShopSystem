@@ -7,7 +7,7 @@
         <%= f.label :End_Date, class: "ui label" %>
         <%= f.date_field :end_date -%>
         <% #f.select :user_id, options_for_select(@users), include_blank: true %>
-        <%= f.select :user_id, User.all.collect{|user| [user.email , user.id]} ,{include_blank: true },Onchange:'getChecks()' %>
+        <%= f.select :user_id, User.all.collect{|user| [user.email , user.id]} ,{include_blank: true },Onclick:'getChecks()' %>
         <% f.submit 'Search', class: 'ui blue button' -%>
 
 

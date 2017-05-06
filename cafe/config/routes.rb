@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'checks/index'
+  get 'checks/checkallget'
 
   post 'checks/check'
+  post 'checks/checkallpost'
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
