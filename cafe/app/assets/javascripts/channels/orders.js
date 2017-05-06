@@ -19,11 +19,9 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                     }
                 }
             });
-
             var productsItems = '';
             for(var i=0;i<products.length;i++)
             {
-                console.log(products[i]);
                 productsItems +='<div  style="text-align: center;">'+
                     '<span>' +
                     '<h4 class="ui image header">' +
@@ -37,7 +35,6 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                     '</span>'+
                     '</div>';
             }
-
             item = '<table class="ui red table">' +
                 '<thead class="'+order.id+'">' +
                 '<tr>' +
@@ -59,10 +56,7 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                 '<div class="'+order.id+'">'+productsItems+'</div>';
             $('.ui.container.segment').append(item);
         }
-
-
     },
-
     renderMessage: function (data) {
         console.log(data)
     }

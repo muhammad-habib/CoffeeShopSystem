@@ -14,7 +14,7 @@
           <td><%= order.created_at %><%= link_to 'Show Order', order, method: :get,class: 'ui button' %></td>
           <td><%= order.user.username %></td>
           <td><%= order.user.room %></td>
-          <td>cancel</td>
+          <td><%= select( "Order",'status',Order::statuses) %></td>
         </tr>
         </tbody>
       </table>
