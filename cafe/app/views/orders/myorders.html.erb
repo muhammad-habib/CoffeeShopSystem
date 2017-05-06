@@ -28,8 +28,9 @@
     <tbody>
     <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at %> <%= link_to 'Show Order', order, method: :get,class: 'ui button' %> </td>
+          <td><%= time_ago_in_words(order.created_at) %> <%= link_to 'Show Order', order, method: :get,class: 'ui button' %> </td>
           <td><span id="<%=	 order.id %>"><%= order.status %></span></td>
+
           <td>
             <% @sum = 0 %>
             <% order.products.each do |product|  %>

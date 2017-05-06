@@ -1,49 +1,49 @@
+<div class="ui  grid">
+  <div class="eight wide column">
 <div class="ui container">
 <h1>Editing User
   <i class="user icon"></i>
 </h1>
-  <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
-    <p>
-      <%= f.label :UserName, class: "ui label" %><br>
-      <%= f.text_field :username %>
-    </p>
+  <%= form_for :user,html:{:class=>"ui form"}, url: user_path(@user), method: :patch do |f| %>
+      <div class="field">
+        <%= f.label :UserName, class: "ui label",style:"float: left;" %><br>
+        <%= f.text_field :username %>
+      </div>
 
-    <p>
-      <%= f.label :Email, class: "ui label" %><br>
-      <%= f.email_field :email %>
-    </p>
+      <div class="field">
+        <%= f.label :Email, class: "ui label",style:"float: left;" %><br>
+        <%= f.email_field :email %>
+      </div>
 
-    <p>
-      <%= f.label :password, class: "ui label" %><br>
-      <%= f.password_field :password %>
-    </p>
-
-      <p>
-        <%= f.label :password, class: "ui label" %><br>
+      <div class="field">
+        <%= f.label :password, class: "ui label",style:"float: left;" %><br>
         <%= f.password_field :password %>
-      </p>
+      </div>
 
-      <p>
-        <%= f.label :image, class: "ui label" %><br>
+      <div class="field">
+        <%= f.label :room, class: "ui label",style:"float: left;" %><br>
+        <%= f.number_field :room %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, class: "ui label",style:"float: left;" %><br>
         <%= f.file_field :image %>
-      </p>
+      </div>
 
-    <p>
-      <%= f.label :Admin, class: "ui label" %><br>
-      <%= f.check_box :admin %>
-    </p>
+      <div class="ui checkbox field">
 
-    <p>
-      <%= f.label :room, class: "ui label" %><br>
-      <%= f.number_field :room %>
-    </p>
+        <%= f.check_box :admin %>
+        <%= f.label :Admin, class: "ui label"%><br>
+      </div>
 
-    <p>
-      <%= f.submit "Save", :class => 'ui green button' %>
-      <%= link_to 'Back', users_path , class: 'ui black button' %>
-    </p>
+      <div>
+        <%= f.submit "Save", :class => 'ui green button' %>
+        <%= link_to 'Back', users_path , class: 'ui black button' %>
+      </div>
 
   <% end %>
 
 
+</div>
+  </div>
 </div>
