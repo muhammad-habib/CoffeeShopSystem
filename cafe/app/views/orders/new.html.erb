@@ -58,7 +58,7 @@
             <% @products.each do |i| %>
                 <div data-id="<%= i.id %>" class="four wide column">
 
-                  <div id="<%= i.id %>" class="ui card items"  >
+                  <div id="<%= i.id %>" class="ui card product"  >
 
                     <div class="image">
                       <%= image_tag( i.image.url, :class => "ui medium image") %>
@@ -104,7 +104,7 @@
         item+="<input name='product["+id+"][notes]' type=text placeholder='notes for "+name+"' value=''><td></tr>"
         return item
     }
-    $(".items").click(function () {
+    $(".product").click(function () {
         console.log("clicked")
         id=$(this).attr('id')
         name=$("label",this).text()

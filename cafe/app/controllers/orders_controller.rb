@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   # GET /orders/manual
   def manual
     @order = Order.new
-    @users = User.all
+    @users = User.all|| []
     @products=Product.where(:is_available => true)
     @rooms=User.all.collect(&:room)
 
