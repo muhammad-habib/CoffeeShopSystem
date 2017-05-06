@@ -3,6 +3,7 @@
  */
 App.messages = App.cable.subscriptions.create('OrdersChannel', {
     received: function (data) {
+        console.log(data);
         order = JSON.parse(data.order);
         if (data.action == 'delete')
             $('.' + order.id).remove();
@@ -19,7 +20,6 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                     }
                 }
             });
-
             var productsItems = '';
             for(var i=0;i<products.length;i++)
             {
@@ -29,14 +29,13 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                     '<img src="' + products[i].image.url+'"' +
                     'class="ui mini rounded image">' +
                     '<div class="content">'+ products[i].name +
-                    '<div class="sub header">'+ products[i].amount +
+                    '<div class="sub header">'+ products[i].amount.amount +
                     '</div> ' +
                     '</div> ' +
                     '</h4> ' +
                     '</span>'+
                     '</div>';
             }
-
             item = '<table class="ui red table">' +
                 '<thead class="'+order.id+'">' +
                 '<tr>' +
@@ -56,12 +55,9 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                 '</tbody> ' +
                 '</table>' +
                 '<div class="'+order.id+'">'+productsItems+'</div>';
-
-            $('.ui.raised.container.segment').append(item);
+            $('.ui.container.segment').append(item);
         }
-
     },
-
     renderMessage: function (data) {
         console.log(data)
     }

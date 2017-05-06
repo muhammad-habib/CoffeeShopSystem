@@ -3,8 +3,15 @@ class Order < ApplicationRecord
   has_many :orders_products,dependent: :destroy
   has_many :products , through:   :orders_products
   before_save :default_values
+  enum status: {
+      'Received': 0,
+      'In Progress': 1,
+      'On The Way': 2,
+      'Delivered To Customer': 3,
+  }
   private
   def default_values
     self.status ||= "Delivered"
   end
+
 end

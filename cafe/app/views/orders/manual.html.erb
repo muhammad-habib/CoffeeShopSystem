@@ -1,53 +1,36 @@
 <h1>New Order</h1>
 
-<%= link_to 'Back', orders_path, class: 'ui green button' %>
+<%= link_to 'Back', orders_path %>
 <div class="ui internally celled grid">
   <div class="row">
     <div class="six wide column">
       <div class="ui segment">
-      <%= render 'form', order: @order %>
+        <%= render 'form', order: @order %>
       </div>
     </div>
     <div class="ten wide column">
       <div class="ui internally celled grid">
         <div class="row">
           <div class="sixteen wide column">
-            <div class="ui styled accordion">
-              <div class="title">
-                <i class="dropdown icon"></i>
-                Latest order
-              </div>
-              <div class="content">
-                <div class="ui segments">
-                  <div class="ui segment">
-                    <div class="ui grid" >
-                      <% unless Order.all.empty?%>
-                          <% @latest.each do |i| %>
-                              <div data-id="<%= i.id %>" class="four wide column">
-                                <div id="<%= i.id %>" class="ui card items"  >
-                                  <div class="image">
-                                    <%= image_tag( i.image.url, :class => "ui medium image") %>
-                                  </div>
-                                  <div class="ui bottom attached content">
-                                    <label><%= i.name%></label>
-                                    <span for="" style="float: right"><%= i.price%></span>
-                                  </div>
 
-                                </div>
-                              </div>
-                          <%end%>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!--<%= collection_select(:user, :user_id, User.all,:id, :username,{}, {:class=>'drop'}) %>-->
+            <div class="ui fluid  search selection dropdown">
+              <input type="hidden" name="country">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select User</div>
+              <div class="menu">
+
+              <%User.all.each do |user|%>
+                  <div class="item" data-value="<%=user.id%>"> <%= image_tag( user.image.url, :class => "ui avatar image") %><%=user.username%></div>
+              <%end%>
             </div>
-          </div>
 
           </div>
 
         </div>
-        <div class="row">
+
+      </div>
+      <div class="row">
         <div class="ui segments">
           <div class="ui segment">
             <h3>our products</h3>
@@ -55,43 +38,59 @@
           <div class="ui segments">
             <div class="ui segment">
               <div class="ui grid" style="height: 500px; overflow-y: auto;">
-            <% @products.each do |i| %>
-                <div data-id="<%= i.id %>" class="four wide column">
+                <% @products.each do |i| %>
+                    <div data-id="<%= i.id %>" class="four wide column">
 
-                  <div id="<%= i.id %>" class="ui card product"  >
+                      <div id="<%= i.id %>" class="ui card product"  >
 
-                    <div class="image">
-                      <%= image_tag( i.image.url, :class => "ui medium image") %>
+                        <div class="image">
+                          <%= image_tag( i.image.url, :class => "ui medium image") %>
+                        </div>
+                        <div class="ui bottom attached content">
+
+                          <p>
+                            <label for=""><%= i.name%></label>
+                            <span for="" style="float: right"><%= i.price%></span>
+                          </p>
+                        </div>
+
+                      </div>
                     </div>
-                    <div class="ui bottom attached content">
-
-                      <p>
-                      <label for=""><%= i.name%></label>
-                      <span for="" style="float: right"><%= i.price%></span>
-                      </p>
-                    </div>
-
-                  </div>
-                </div>
-            <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-    </div>
     </div>
   </div>
-  </div>
+</div>
 </div>
 
 
 
 <script type="text/javascript">
-    $('.ui.accordion')
-        .accordion()
+  rooms={}
+
+      <%User.all.each do |i|%>
+        rooms[<%=i.id%>]= <%=i.room%>
+      <%end%>
+      console.log(rooms)
+    $('.dropdown')
+        .dropdown({
+            action: 'activate',
+            onChange: function(value) {
+                console.log(value)
+                $("#hidden").val(value)
+                $('select').val(rooms[value]);
+
+
+
+            }
+        })
     ;
-    var list={};
-    var total=0;
+    var list={}
+    var total=0
     var create = function(id,name,amount){
         item="<tr class='product' data-id="+id+">"
         item+="<td><label>"+name+"</label></td>"

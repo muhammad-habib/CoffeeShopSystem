@@ -23,6 +23,11 @@
         <%= f.password_field :password %>
       </p>
 
+      <p>
+        <%= f.label :image, class: "ui label" %><br>
+        <%= f.file_field :image %>
+      </p>
+
     <p>
       <%= f.label :Admin, class: "ui label" %><br>
       <%= f.check_box :admin %>

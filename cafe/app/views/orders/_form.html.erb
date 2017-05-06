@@ -1,14 +1,11 @@
-<row>
-  <table  class="ui single line table">
-
-    <tbody id="holder">
-
-    </tbody>
-  </table>
-</row>
 
 
-<%= form_for(order, :html => {:id => 'form'}) do |f| %>
+
+<%= form_for(order, :html => {:id => 'form',:class=>"ui form"}) do |f| %>
+    <div class="row">
+    <table  class="ui single line table">
+
+      <tbody id="holder">
     <% if order.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -36,27 +33,52 @@
         </tr>
     <%end%>
     <%end%>
+<tr>  <div class="field">
+  <%= f.label :room %>
+  <%=select_tag "order[room]", options_for_select(@rooms,current_user.room)%>
+</div></tr>
+    <%= hidden_field_tag "user_id", current_user.id ,:id=>"hidden" %>
+<tr>
+  <h1>total :<i class='pound icon'></i><span id="total"></span></h1>
+</tr>
+    <!--<tr>  <div id="submit" class="ui fluid large teal  button actions">-->
+      <%= f.submit  :id=>"submit",:class=>"ui fluid large teal  button actions" %>
+    <!--</div>-->
+    </tr>
 
-    <div class="field">
-      <%= f.label :room %>
-      <%=select_tag "order[room]", options_for_select(@rooms,current_user.room)%>
-    </div>
 
-
-<h1>total :<span id="total"></span></h1>
-    <div id="submit" class="actions">
-      <%= f.submit %>
+      </tbody>
+    </table>
     </div>
 <% end %>
 
 
 <script type="text/javascript">
 
+    $("i").click(function(event){
+        event.preventDefault();
+    });
+
     $(document).on("click",".remove",function () {
         console.log("remove",$(this).attr('data-id'))
       delete list[$(this).data('id')]
         console.log("after remove",list)
       render(list)
+    });
+
+    $(document).on("click",".more",function () {
+        console.log("more",list[$(this).data('id')].name)
+
+        list[$(this).data('id')].amount+=1
+
+        render(list)
+    });
+
+    $(document).on("click",".less",function () {
+        console.log("less",list[$(this).data('id')].name)
+        list[$(this).data('id')].amount-=1
+
+        render(list)
     });
 
 </script>
