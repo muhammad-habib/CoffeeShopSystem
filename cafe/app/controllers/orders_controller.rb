@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     if current_user.admin
-    @orders = Order.all
+      @orders = Order.all
     else
       return redirect_to myorders_path
     end
@@ -44,19 +44,17 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    productsAmount= params[:product]
-
+    productsAmount = params[:product]
     params=order_params
-    params[:user_id]=current_user.id
+    params[:user_id] = current_user.id
     @order = Order.new(params)
     respond_to do |format|
       if @order.save
         productsAmount.each do |key, value|
-          puts "=======>",key,value
           orderProducts = OrdersProduct.new()
           orderProducts.product_id = key
           orderProducts.order_id = @order.id
-          orderProducts.amount = value
+          orderProducts.amount = value[:amount]
           orderProducts.save
         end
         ActionCable.server.broadcast 'orders',

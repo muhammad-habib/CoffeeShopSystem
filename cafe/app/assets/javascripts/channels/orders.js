@@ -23,13 +23,14 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
             var productsItems = '';
             for(var i=0;i<products.length;i++)
             {
+                console.log(products[i]);
                 productsItems +='<div  style="text-align: center;">'+
                     '<span>' +
                     '<h4 class="ui image header">' +
                     '<img src="' + products[i].image.url+'"' +
                     'class="ui mini rounded image">' +
                     '<div class="content">'+ products[i].name +
-                    '<div class="sub header">'+ products[i].amount +
+                    '<div class="sub header">'+ products[i].amount.amount +
                     '</div> ' +
                     '</div> ' +
                     '</h4> ' +
@@ -56,9 +57,9 @@ App.messages = App.cable.subscriptions.create('OrdersChannel', {
                 '</tbody> ' +
                 '</table>' +
                 '<div class="'+order.id+'">'+productsItems+'</div>';
-
-            $('.ui.raised.container.segment').append(item);
+            $('.ui.container.segment').append(item);
         }
+
 
     },
 
