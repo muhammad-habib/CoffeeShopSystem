@@ -29,6 +29,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        ActionCable.server.broadcast 'products',
+                                     product: @product.to_json,
+                                     action: 'create'
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -44,7 +47,8 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         ActionCable.server.broadcast 'products',
-                                     product: @product.to_json
+                                     product: @product.to_json,
+                                     action: 'update'
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -64,7 +68,8 @@ class ProductsController < ApplicationController
       @product.update_attributes(is_available: true)
     end
     ActionCable.server.broadcast 'products',
-                                 product: @product.to_json
+                                 product: @product.to_json,
+                                 action: 'status'
     redirect_to products_path
   end
 
@@ -72,6 +77,9 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
+    ActionCable.server.broadcast 'products',
+                                 product: @product.to_json,
+                                 action: 'delete'
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
