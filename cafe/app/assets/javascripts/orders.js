@@ -4,8 +4,8 @@
 $(document).ready(function () {
 
 
-    $("document").on( "change",'.changeStatus', function() {
-        console.log("ddddddd")
+    $(".changeStatus").change(function () {
+
         $.ajax({
             url: "/changeStatus",
             data: {
@@ -16,4 +16,15 @@ $(document).ready(function () {
             method: 'GET'
         })
     });
+    $(document).on("change",".changeStatus",function () {
+        $.ajax({
+            url: "/changeStatus",
+            data: {
+                user: $(this).data('user'),
+                order: $(this).data('id'),
+                status: $(this).val()
+            },
+            method: 'GET'
+        })
+    })
 });
