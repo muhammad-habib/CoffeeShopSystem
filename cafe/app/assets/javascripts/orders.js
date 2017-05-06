@@ -2,11 +2,7 @@
  * Created by seif on 5/3/17.
  */
 $(document).ready(function () {
-
-
-
-    $("table").on("change", ".changeStatus", function(event){
-        console.log("dddddddddd");
+    $(document).on("change",".changeStatus",function () {
         $.ajax({
             url: "/changeStatus",
             data: {
@@ -16,5 +12,5 @@ $(document).ready(function () {
             },
             method: 'GET'
         })
-    });
+    })
 });
